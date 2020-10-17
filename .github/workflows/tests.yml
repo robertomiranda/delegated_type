@@ -14,8 +14,9 @@ on:
     branches: [ master ]
 
 jobs:
-  test:
+  rails_5_0:
 
+    name: "Rails 5.0.x"
     runs-on: ubuntu-latest
 
     steps:
@@ -27,15 +28,60 @@ jobs:
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
         ruby-version: 2.6
-    - name: Rails 5.0.X
-      run:  bundle install --gemfile=gemfiles/rails5_0
-      run: bundle exec rake --gemfile=gemfiles/rails5_0
-    - name: Rails 5.1.X
-      run:  bundle install --gemfile=gemfiles/rails5_1
-      run: bundle exec rake --gemfile=gemfiles/rails5_1
-    - name: Rails 5.2.X
-      run:  bundle install --gemfile=gemfiles/rails5_2
-      run: bundle exec rake --gemfile=gemfiles/rails5_2
-    - name: Rails 6.0.X
-      run:  bundle install --gemfile=gemfiles/rails6_0
-      run: bundle exec rake --gemfile=gemfiles/rails6_0
+
+    - name: Run tests
+      run:  bundle install --gemfile=gemfiles/rails5_0; bundle exec --gemfile=gemfiles/rails5_0 rake
+
+  rails_5_1:
+
+    name: "Rails 5.1.x"
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+    # change this to (see https://github.com/ruby/setup-ruby#versioning):
+    # uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      with:
+        ruby-version: 2.6
+
+    - name: Run tests
+      run:  bundle install --gemfile=gemfiles/rails5_1; bundle exec --gemfile=gemfiles/rails5_1 rake
+
+  rails_5_2:
+
+    name: "Rails 5.2.x"
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+    # change this to (see https://github.com/ruby/setup-ruby#versioning):
+    # uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      with:
+        ruby-version: 2.6
+
+
+    - name: Run tests
+      run:  bundle install --gemfile=gemfiles/rails5_2; bundle exec --gemfile=gemfiles/rails5_1 rake
+
+  rails_6_0:
+
+    name: "Rails 6.0.x"
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+    # change this to (see https://github.com/ruby/setup-ruby#versioning):
+    # uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      with:
+        ruby-version: 2.6
+    - name: Run tests
+      run:  bundle install --gemfile=gemfiles/rails6_0; bundle exec --gemfile=gemfiles/rails6_0 rake
