@@ -67,7 +67,7 @@ jobs:
 
 
     - name: Run tests
-      run:  bundle install --gemfile=gemfiles/rails5_2; bundle exec --gemfile=gemfiles/rails5_1 rake
+      run:  bundle install --gemfile=gemfiles/rails5_2; bundle exec --gemfile=gemfiles/rails5_2 rake
 
   rails_6_0:
 
