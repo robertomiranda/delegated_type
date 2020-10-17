@@ -130,7 +130,7 @@ Now you can list a bunch of entries, call `Entry#title`, and polymorphism will p
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/delegated_type. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/delegated_type/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/robertomiranda/delegated_type. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/delegated_type/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## License
