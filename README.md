@@ -11,7 +11,7 @@ Message < Entry
 Comment < Entry
 ```
 
-How do you show a feed that has both +Message+ and +Comment+ records, which can be easily paginated? Well, you can't! Messages are backed by a messages table and comments by a comments table. You can't pull from both tables at once and use a consistent OFFSET/LIMIT scheme.
+How do you show a feed that has both `Message` and `Comment` records, which can be easily paginated? Well, you can't! Messages are backed by a messages table and comments by a comments table. You can't pull from both tables at once and use a consistent OFFSET/LIMIT scheme.
 
 You can get around the pagination problem by using single-table inheritance, but now you're forced into a single mega table with all the attributes from all subclasses. No matter how divergent. If a Messagehas a subject, but the comment does not, well, now the comment does anyway! So STI works best when there's little divergence between the subclasses and their attributes.
 
@@ -48,7 +48,7 @@ Let's look at that entry/message/comment example using delegated types:
   end
 ```
 
-As you can see, neither +Message+ nor +Comment+ are meant to stand alone. Crucial metadata for both classes resides in the +Entry+ "superclass". But the +Entry+ absolutely can stand alone in terms of querying capacity in particular. You can now easily do things like:
+As you can see, neither `Message` nor `Comment` are meant to stand alone. Crucial metadata for both classes resides in the `Entry` "superclass". But the `Entry` absolutely can stand alone in terms of querying capacity in particular. You can now easily do things like:
 
 ```ruby
   Account.entries.order(created_at: :desc).limit(50)
@@ -81,7 +81,7 @@ The entry "superclass" also serves as a perfect place to put all that shared log
   end
 ```
 
-Which allows you to have controllers for things like +ForwardsController+ and +RedeliverableController+ that both act on entries, and thus provide the shared functionality to both messages and comments.
+Which allows you to have controllers for things like `ForwardsController` and `RedeliverableController` that both act on entries, and thus provide the shared functionality to both messages and comments.
 
 ## Creating new records
 
