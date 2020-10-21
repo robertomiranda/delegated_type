@@ -13,7 +13,7 @@ Comment < Entry
 
 How do you show a feed that has both `Message` and `Comment` records, which can be easily paginated? Well, you can't! Messages are backed by a messages table and comments by a comments table. You can't pull from both tables at once and use a consistent OFFSET/LIMIT scheme.
 
-You can get around the pagination problem by using single-table inheritance, but now you're forced into a single mega table with all the attributes from all subclasses. No matter how divergent. If a Messagehas a subject, but the comment does not, well, now the comment does anyway! So STI works best when there's little divergence between the subclasses and their attributes.
+You can get around the pagination problem by using single-table inheritance, but now you're forced into a single mega table with all the attributes from all subclasses. No matter how divergent. If a Message has a subject, but the comment does not, well, now the comment does anyway! So STI works best when there's little divergence between the subclasses and their attributes.
 
 But there's a third way: Delegated types. With this approach, the "superclass" is a concrete class that is represented by its own table, where all the superclass attributes that are shared amongst all the "subclasses" are stored. And then each of the subclasses have their own individual tables for additional attributes that are particular to their implementation. This is similar to what's called multi-table inheritance in Django, but instead of actual inheritance, this approach uses delegation to form the hierarchy and share responsibilities.
 
@@ -125,8 +125,6 @@ The delegated type shouldn't just answer the question of what the underlying cla
 ```
 
 Now you can list a bunch of entries, call `Entry#title`, and polymorphism will provide you with the answer.
-
-
 
 ## Contributing
 
